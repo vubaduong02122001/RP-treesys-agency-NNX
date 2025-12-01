@@ -302,7 +302,7 @@ class InsuranceDataProcessor:
         ]
         df_raw = self._ensure_columns(df_raw, target_cols)
 
-        df_offline = pd.DataFrame({col: None for col in df_raw.columns})
+        df_offline = pd.DataFrame(columns=df_raw.columns, index=df_sheet.index)
         df_offline["FINISH_EMPLOYEE_NM"] = df_sheet["Họ & Tên CTV"]
         df_offline["FINISH_EMPLOYEE_CODE"] = df_sheet["Mã CTV"]
         df_offline["CONTRACT_AMT"] = pd.to_numeric(df_sheet["Phí Bảo Hiểm"], errors="coerce").fillna(0)
